@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Meta.XR.MRUtilityKit;
 using UnityEngine;
 
@@ -32,19 +33,92 @@ public class PowerSourcePlacer : MonoBehaviour
     }
     public void CreateCablesBetweenObjAndPowerGrid(GameObject obj)
     {
+        MRUKAnchor startWall = GetWallClosestTo(obj.transform, new List<MRUKAnchor>());
+        MRUKAnchor endWall = GetWallClosestTo(powergrid.transform, new List<MRUKAnchor>(){startWall});
+        CableController lastCable;
         //First we create a cable from the obj to the ceiling. Then from that point to the powergrid
-        var cableToCeiling = Instantiate(cablePrefab);
-        cableToCeiling.GetComponent<CableController>().startPoint = obj.transform.GetChild(0).transform;
-        cableToCeiling.GetComponent<CableController>().endPoint = Instantiate(CableConnectionPrefab).transform;
-        cableToCeiling.GetComponent<CableController>().endPoint.position = new Vector3(obj.transform.GetChild(0).transform.position.x, powergrid.transform.position.y, obj.transform.GetChild(0).transform.position.z);
+        CableController newCable = Instantiate(cablePrefab).GetComponent<CableController>();
+        newCable.startPoint = obj.transform.GetChild(0).transform;
+        newCable.endPoint = Instantiate(CableConnectionPrefab).transform;
+        newCable.endPoint.position = newCable.startPoint.position;
+        newCable.endPoint.position = new Vector3(newCable.endPoint.position.x, GetWallHeight(), newCable.endPoint.position.z);
+        lastCable = newCable;
+        //check if the closest wall is the endwall
+        if(endWall != startWall){
+            //we ahve to transition over a sidewall
+            if(GetWallClosestTo(newCable.endPoint, new List<MRUKAnchor> {startWall}) != endWall){
+                //we have to go around two corners
+                MRUKAnchor cornerWall = GetWallClosestTo(lastCable.endPoint, new List<MRUKAnchor> {startWall, endWall});
+                newCable = Instantiate(cablePrefab).GetComponent<CableController>();
+                newCable.startPoint = lastCable.endPoint;
+                newCable.endPoint = Instantiate(CableConnectionPrefab).transform;
+                newCable.endPoint.position = lastCable.startPoint.position;
+                newCable.endPoint.position = new Vector3(lastCable.endPoint.position.x, GetWallHeight(), lastCable.endPoint.position.z);
+                Vector3 epos;
+                cornerWall.GetClosestSurfacePosition(lastCable.endPoint.position, out epos);
+                newCable.endPoint.position = epos;
+                lastCable = newCable;
 
-        var cableToPowerGrid = Instantiate(cablePrefab);
-        cableToPowerGrid.GetComponent<CableController>().startPoint = cableToCeiling.GetComponent<CableController>().endPoint;
-        cableToPowerGrid.GetComponent<CableController>().endPoint = powergrid.transform;
+                //cable all the way to closest point of endwall\
+                /*
+                newCable = Instantiate(cablePrefab).GetComponent<CableController>();
+                newCable.startPoint = lastCable.endPoint;
+                newCable.endPoint = Instantiate(CableConnectionPrefab).transform;
+                newCable.endPoint.position = endWall.transform.position;
+                newCable.endPoint.position = new Vector3(newCable.endPoint.position.x, GetWallHeight(), newCable.endPoint.position.z);
+                Vector3 poss;
+                endWall.GetClosestSurfacePosition(lastCable.endPoint.position, out poss);
+                newCable.endPoint.position = poss;
+                lastCable = newCable;
+                */
 
-        obj.GetComponent<PlaceableObject>().SetConnectedToElectricity(true);
+            }
+            //cable to endwall
+            newCable = Instantiate(cablePrefab).GetComponent<CableController>();
+            newCable.startPoint = lastCable.endPoint;
+            newCable.endPoint = Instantiate(CableConnectionPrefab).transform;
+            newCable.endPoint.position = lastCable.startPoint.position;
+            newCable.endPoint.position = new Vector3(lastCable.endPoint.position.x, GetWallHeight(), lastCable.endPoint.position.z);
+            Vector3 endpos;
+            endWall.GetClosestSurfacePosition(lastCable.endPoint.position, out endpos);
+            newCable.endPoint.position = endpos;
+            lastCable = newCable;
 
-    
+            
+        }
+        //cable to right above powerrgrid
+            newCable = Instantiate(cablePrefab).GetComponent<CableController>();
+            newCable.startPoint = lastCable.endPoint;
+            newCable.endPoint = Instantiate(CableConnectionPrefab).transform;
+            newCable.endPoint.position = powergrid.transform.position;
+            newCable.endPoint.position = new Vector3(newCable.endPoint.position.x, GetWallHeight(), newCable.endPoint.position.z);
+            lastCable = newCable;
+
+
+        //cable down to powergrid
+        newCable = Instantiate(cablePrefab).GetComponent<CableController>();
+        newCable.startPoint = lastCable.endPoint;
+        newCable.endPoint = powergrid.transform;
+
+
+    }
+    public float GetWallHeight(){
+        return MRUK.Instance.GetCurrentRoom().GetRoomBounds().size.y - 0.2f;
+    }
+    public MRUKAnchor GetWallClosestTo(Transform transform, List<MRUKAnchor> wallAnchorsToIgnore){
+        
+        List<MRUKAnchor> walls = MRUK.Instance.GetCurrentRoom().WallAnchors;
+        if(wallAnchorsToIgnore != null){
+            walls = walls.Except(wallAnchorsToIgnore).ToList();
+        }
+        return walls.OrderBy(wall => getDistanceToWall(wall, transform.position)).First();
+        
+    }
+
+    public float getDistanceToWall(MRUKAnchor wall, Vector3 point){
+        Vector3 wallPos;
+        wall.GetClosestSurfacePosition(point, out wallPos);
+        return Vector3.Distance(point, wallPos);
     }
     // Update is called once per frame
 
