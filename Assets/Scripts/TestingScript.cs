@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Meta.XR.BuildingBlocks;
 using Meta.XR.MRUtilityKit;
+using Unity.VisualScripting;
+using System.Linq;
 using UnityEngine;
 
 public class TestingScript : MonoBehaviour
@@ -10,31 +13,46 @@ public class TestingScript : MonoBehaviour
     
     private GameObject currentPreview;
     void Update(){
-        //Try Place
-        if(OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch) || OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch)){
-            if(!IsPositionOccupied(getPositionFromRaycast())){
+        var objs = GetPlaceableObjectsAtPointedSpot();
+        //set outline width to 0.1f if the object is pointed at
+
+        //Try Place, noly allowed when nothing there
+        if(OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch)){
+            Debug.Log("Button pressed for placing");
+            if( !IsPositionOccupied(getPositionFromRaycast())){
                 PlacePrefabAtControllerPointedSpot();
             }
+
         }
         //try delete
-        else if(OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch)){
-            DeletePrefabAtControllerPointedSpot();
+        else if(OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch) && objs != null){
+            foreach(var obj in objs){
+                Destroy(obj);
+            }
+            EventManager.Instance.TriggerObjectDeleted();
+            
         }
         else{
             TryPlacePreviewPrefab();
         }
             
     }
-   
+
     public void PlacePrefabAtControllerPointedSpot(){
         if (currentObject != null){
             Quaternion rot = Quaternion.LookRotation(getSurfaceNormalFromPointedWall());
             Vector3 pos = getPositionFromRaycast();
-            Instantiate(currentObject.prefabForPlacing, pos, rot);
-            EventManager.Instance.TriggerObjectPlaced();
+            var obj = Instantiate(currentObject.prefabForPlacing, pos, rot);
+            var anchor = obj.AddComponent<OVRSpatialAnchor>();
+            //StartCoroutine(WaitAndSaveAnchor(anchor));
+            EventManager.Instance.TriggerObjectPlaced(obj);
         
         }
     }
+
+   
+
+        
     private void TryPlacePreviewPrefab(){
         //if the user is pointing at a wall or floor, we place the preview prefab at the closest point
         if (currentObject != null){
@@ -62,7 +80,7 @@ public class TestingScript : MonoBehaviour
         Ray ray = new Ray(controllerPosition, controllerForward);
         Vector3 surfaceNormal;
         
-        LabelFilter filter = new LabelFilter();
+        LabelFilter filter = LabelFilter.Included(new List<string> { "WALL_FACE"});
         MRUKAnchor anchor;
         
         MRUK.Instance.GetCurrentRoom().GetBestPoseFromRaycast(ray, 2000f, filter,out anchor, out surfaceNormal);
@@ -77,7 +95,7 @@ public class TestingScript : MonoBehaviour
         Ray ray = new Ray(controllerPosition, controllerForward);
 
         
-        LabelFilter filter = new LabelFilter();
+        LabelFilter filter = LabelFilter.Included(new List<string> { "WALL_FACE"});
         RaycastHit hit;
         MRUKAnchor anchor;
         
@@ -100,18 +118,20 @@ public class TestingScript : MonoBehaviour
     }
     
 
-    private void DeletePrefabAtControllerPointedSpot(){
-        Vector3 position = getPositionFromRaycast();
+    private GameObject[] GetPlaceableObjectsAtPointedSpot(){
+            Vector3 position = getPositionFromRaycast();
         if (position != Vector3.zero){
-            Collider[] hitColliders = Physics.OverlapSphere(position, 0.1f);
-            foreach (var hitCollider in hitColliders){
-                if (hitCollider.gameObject.tag == "PlacedObject"){
-                    Destroy(hitCollider.gameObject);
-                    EventManager.Instance.TriggerObjectDeleted();
-                }
-            }
+            Collider[] hitColliders = Physics.OverlapSphere(position, 0.05f);
+            return hitColliders.Where(x => x.gameObject.tag == "PlacedObject").Select(x => x.gameObject).ToArray();
+        }
+        else{
+            return null;
         }
     }
+
+
+
+    
 
     
 }

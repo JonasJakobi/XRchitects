@@ -1,6 +1,7 @@
 
 // Singleton EventManager class to manage events for object placement and deletion
 using System;
+using UnityEngine;
 
 public class EventManager
 {
@@ -8,7 +9,7 @@ public class EventManager
     private static EventManager instance;
 
     // Events
-    public event Action OnObjectPlaced;
+    public event Action<GameObject> OnObjectPlaced;
     public event Action OnObjectDeleted;
 
     // Private constructor to prevent instantiation
@@ -28,9 +29,9 @@ public class EventManager
     }
 
     // Method to trigger the OnObjectPlaced event
-    public void TriggerObjectPlaced()
+    public void TriggerObjectPlaced(GameObject obj)
     {
-        OnObjectPlaced?.Invoke();
+        OnObjectPlaced?.Invoke(obj);
     }
 
     // Method to trigger the OnObjectDeleted event
