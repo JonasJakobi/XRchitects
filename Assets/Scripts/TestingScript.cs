@@ -27,6 +27,7 @@ public class TestingScript : MonoBehaviour
         //try delete
         else if(OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch) && objs != null){
             foreach(var obj in objs){
+                obj.GetComponent<PlaceableObject>().DestroyAllConnectedCables();
                 Destroy(obj);
             }
             EventManager.Instance.TriggerObjectDeleted();
@@ -128,6 +129,7 @@ public class TestingScript : MonoBehaviour
             return null;
         }
     }
+
 
 
 

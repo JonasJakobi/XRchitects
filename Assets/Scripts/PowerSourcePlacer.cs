@@ -39,6 +39,7 @@ public class PowerSourcePlacer : MonoBehaviour
         //First we create a cable from the obj to the ceiling. Then from that point to the powergrid
         CableController newCable = Instantiate(cablePrefab).GetComponent<CableController>();
         newCable.startPoint = obj.transform.GetChild(0).transform;
+        obj.GetComponent<PlaceableObject>().AddCable(newCable.gameObject);
         newCable.endPoint = Instantiate(CableConnectionPrefab).transform;
         newCable.endPoint.position = newCable.startPoint.position;
         newCable.endPoint.position = new Vector3(newCable.endPoint.position.x, GetWallHeight(), newCable.endPoint.position.z);
@@ -50,8 +51,12 @@ public class PowerSourcePlacer : MonoBehaviour
                 //we have to go around two corners
                 MRUKAnchor cornerWall = GetWallClosestTo(lastCable.endPoint, new List<MRUKAnchor> {startWall, endWall});
                 newCable = Instantiate(cablePrefab).GetComponent<CableController>();
+                obj.GetComponent<PlaceableObject>().AddCable(newCable.gameObject);
+
                 newCable.startPoint = lastCable.endPoint;
                 newCable.endPoint = Instantiate(CableConnectionPrefab).transform;
+                obj.GetComponent<PlaceableObject>().AddCable(newCable.endPoint.gameObject);
+
                 newCable.endPoint.position = lastCable.startPoint.position;
                 newCable.endPoint.position = new Vector3(lastCable.endPoint.position.x, GetWallHeight(), lastCable.endPoint.position.z);
                 Vector3 epos;
@@ -75,8 +80,12 @@ public class PowerSourcePlacer : MonoBehaviour
             }
             //cable to endwall
             newCable = Instantiate(cablePrefab).GetComponent<CableController>();
+            obj.GetComponent<PlaceableObject>().AddCable(newCable.gameObject);
+
             newCable.startPoint = lastCable.endPoint;
             newCable.endPoint = Instantiate(CableConnectionPrefab).transform;
+            obj.GetComponent<PlaceableObject>().AddCable(newCable.endPoint.gameObject);
+
             newCable.endPoint.position = lastCable.startPoint.position;
             newCable.endPoint.position = new Vector3(lastCable.endPoint.position.x, GetWallHeight(), lastCable.endPoint.position.z);
             Vector3 endpos;
@@ -88,8 +97,11 @@ public class PowerSourcePlacer : MonoBehaviour
         }
         //cable to right above powerrgrid
             newCable = Instantiate(cablePrefab).GetComponent<CableController>();
+            obj.GetComponent<PlaceableObject>().AddCable(newCable.gameObject);
+
             newCable.startPoint = lastCable.endPoint;
             newCable.endPoint = Instantiate(CableConnectionPrefab).transform;
+            obj.GetComponent<PlaceableObject>().AddCable(newCable.endPoint.gameObject);
             newCable.endPoint.position = powergrid.transform.position;
             newCable.endPoint.position = new Vector3(newCable.endPoint.position.x, GetWallHeight(), newCable.endPoint.position.z);
             lastCable = newCable;
@@ -97,6 +109,7 @@ public class PowerSourcePlacer : MonoBehaviour
 
         //cable down to powergrid
         newCable = Instantiate(cablePrefab).GetComponent<CableController>();
+        obj.GetComponent<PlaceableObject>().AddCable(newCable.gameObject);
         newCable.startPoint = lastCable.endPoint;
         newCable.endPoint = powergrid.transform;
 

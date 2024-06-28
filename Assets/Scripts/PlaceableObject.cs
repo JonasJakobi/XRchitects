@@ -10,8 +10,11 @@ public class PlaceableObject : MonoBehaviour{
 
 
     private bool connectedToElectricity = false;
+
+    public List<GameObject> cables = new List<GameObject>();
     private void Start(){
         SetOutlineBasedOnElectricity();
+        
     }
 
     public bool GetConnectedToElectricity(){
@@ -34,5 +37,18 @@ public class PlaceableObject : MonoBehaviour{
             GetComponent<Outline>().OutlineWidth = 1;
 
         }
+    }
+
+    public void DestroyAllConnectedCables(){
+        //go from endpoint to endpoint and destroy them backwards.
+        foreach(var cable in cables){
+            Destroy(cable);
+            
+        }
+
+    }
+
+    public void AddCable(GameObject cable){
+        cables.Add(cable);
     }
 }
