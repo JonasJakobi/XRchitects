@@ -13191,6 +13191,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 435526310}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &768800172
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 768800174}
+  - component: {fileID: 768800173}
+  m_Layer: 0
+  m_Name: Power Source Placer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &768800173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768800172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4baef176f623a414fa066f32d6e72fa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerGridPrefab: {fileID: 455065408422882979, guid: 36e0079bb36fa4c4282b4a140a3d24e1, type: 3}
+  cablePrefab: {fileID: 7652111675531776880, guid: be2a208c3602e9440b042ffdce49367e, type: 3}
+  CableConnectionPrefab: {fileID: 6342904502467745939, guid: d99dccb835e4bad4b8005d333e469e50, type: 3}
+  powergrid: {fileID: 0}
+--- !u!4 &768800174
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768800172}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.013, y: 0.263, z: 0.085}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &769131777
 GameObject:
   m_ObjectHideFlags: 0
@@ -38352,3 +38400,4 @@ SceneRoots:
   - {fileID: 16598482}
   - {fileID: 2111822574}
   - {fileID: 521128410}
+  - {fileID: 768800174}

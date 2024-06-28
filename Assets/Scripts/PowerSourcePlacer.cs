@@ -9,7 +9,7 @@ public class PowerSourcePlacer : MonoBehaviour
     public GameObject powerGridPrefab;
     public GameObject cablePrefab;
 
-
+    public GameObject CableConnectionPrefab;
     public GameObject powergrid;
     // Start is called before the first frame update
     void Start()
@@ -34,9 +34,9 @@ public class PowerSourcePlacer : MonoBehaviour
     {
         //First we create a cable from the obj to the ceiling. Then from that point to the powergrid
         var cableToCeiling = Instantiate(cablePrefab);
-        cableToCeiling.GetComponent<CableController>().startPoint = obj.transform;
-        cableToCeiling.GetComponent<CableController>().endPoint = Instantiate(new GameObject()).transform;
-        cableToCeiling.GetComponent<CableController>().endPoint.position = new Vector3(obj.transform.position.x, powergrid.transform.position.y, obj.transform.position.z);
+        cableToCeiling.GetComponent<CableController>().startPoint = obj.transform.GetChild(0).transform;
+        cableToCeiling.GetComponent<CableController>().endPoint = Instantiate(CableConnectionPrefab).transform;
+        cableToCeiling.GetComponent<CableController>().endPoint.position = new Vector3(obj.transform.GetChild(0).transform.position.x, powergrid.transform.position.y, obj.transform.GetChild(0).transform.position.z);
 
         var cableToPowerGrid = Instantiate(cablePrefab);
         cableToPowerGrid.GetComponent<CableController>().startPoint = cableToCeiling.GetComponent<CableController>().endPoint;
