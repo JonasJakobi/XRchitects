@@ -14,7 +14,9 @@ public class TestingScript : MonoBehaviour
     private GameObject currentPreview;
     void Update(){
         var objs = GetPlaceableObjectsAtPointedSpot();
-        //set outline width to 0.1f if the object is pointed at
+        if(OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch)){
+            PowerSourcePlacer.Instance.SetShowingCables(!PowerSourcePlacer.Instance.GetShowingCables());
+        }
 
         //Try Place, noly allowed when nothing there
         if(OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch)){

@@ -6,15 +6,19 @@ using UnityEngine;
 
 public class PowerSourcePlacer : MonoBehaviour
 {
-
+    private bool showingCables = true;
+    public static PowerSourcePlacer Instance;
     public GameObject powerGridPrefab;
     public GameObject cablePrefab;
 
     public GameObject CableConnectionPrefab;
     public GameObject powergrid;
+
+    private List<GameObject> cables = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
+        Instance = this;
         StartCoroutine(WaitAndDoStartRoutine());
     }
 
@@ -112,7 +116,7 @@ public class PowerSourcePlacer : MonoBehaviour
         obj.GetComponent<PlaceableObject>().AddCable(newCable.gameObject);
         newCable.startPoint = lastCable.endPoint;
         newCable.endPoint = powergrid.transform;
-
+        obj.GetComponent<PlaceableObject>().SetConnectedToElectricity(true);
 
     }
     public float GetWallHeight(){
@@ -133,7 +137,29 @@ public class PowerSourcePlacer : MonoBehaviour
         wall.GetClosestSurfacePosition(point, out wallPos);
         return Vector3.Distance(point, wallPos);
     }
-    // Update is called once per frame
+    public bool GetShowingCables(){
+        return showingCables;
+    }
+    public void SetShowingCables(bool value){
+        showingCables = value;
+        if(showingCables){
+            foreach(var cable in cables){
+                cable.GetComponent<CableController>().ShowCable();
+            }
+        }
+        else{
+            foreach(var cable in cables){
+                cable.GetComponent<CableController>().HideCable();
+            }
+        }
+    }
+
+    public void RegisterCable(GameObject cable){
+        cables.Add(cable);
+    }
+    public void UnregisterCable(GameObject cable){
+        cables.Remove(cable);
+    }
 
 
 }

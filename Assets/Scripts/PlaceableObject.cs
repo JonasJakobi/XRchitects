@@ -5,6 +5,8 @@ using Meta.XR.MRUtilityKit;
 using Unity.VisualScripting;
 using System.Linq;
 using UnityEngine;
+using DG.Tweening;
+using Sequence = DG.Tweening.Sequence;
 
 public class PlaceableObject : MonoBehaviour{
 
@@ -14,6 +16,11 @@ public class PlaceableObject : MonoBehaviour{
     public List<GameObject> cables = new List<GameObject>();
     private void Start(){
         SetOutlineBasedOnElectricity();
+        Vector3 localScale = transform.localScale;
+        transform.localScale = new Vector3(0,0,0);
+        Sequence plop = DOTween.Sequence();
+        transform.DOScale(localScale, 1f).SetEase(Ease.OutBack);
+
         
     }
 
