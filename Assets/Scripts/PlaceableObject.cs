@@ -20,7 +20,7 @@ public class PlaceableObject : MonoBehaviour{
         transform.localScale = new Vector3(0,0,0);
         Sequence plop = DOTween.Sequence();
         transform.DOScale(localScale, 1f).SetEase(Ease.OutBack);
-
+       
         
     }
 
