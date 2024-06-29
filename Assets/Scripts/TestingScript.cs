@@ -10,12 +10,47 @@ public class TestingScript : MonoBehaviour
 {
     public SpawnableObjectMenuItem currentObject;  
 
-    
+    public OurInputMode inputMode;
     private GameObject currentPreview;
+    [SerializeField]
+    private GameObject previewPrefabForDeleting;
     void Update(){
-        var objs = GetPlaceableObjectsAtPointedSpot();
-        //set outline width to 0.1f if the object is pointed at
 
+        if(OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch)){
+            ChangeInputMode(OurInputMode.DeletingObject);
+        }
+        else if(OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch)){
+            ChangeInputMode(OurInputMode.PlacingObject);
+        }
+        if(OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.LTouch)){
+            PowerSourcePlacer.Instance.SetShowingCables(!PowerSourcePlacer.Instance.GetShowingCables());
+        }
+
+        
+        switch(inputMode){
+            case OurInputMode.PlacingObject:
+                HandlePlacingObjectInputs();
+                break;
+            case OurInputMode.DeletingObject:
+                HandleDeletingObjectInputs();
+                break;
+            case OurInputMode.ConnectingLightWithSwitch:
+                HandleConnectingLightWithSwitchInputs();
+                break;
+        }
+            
+    }
+
+    public void ChangeInputMode(OurInputMode mode){
+        if(inputMode == OurInputMode.PlacingObject || inputMode == OurInputMode.DeletingObject){
+            if(currentPreview != null){
+                Destroy(currentPreview);
+            }
+           
+        }
+        inputMode = mode;
+    }
+    private void HandlePlacingObjectInputs(){
         //Try Place, noly allowed when nothing there
         if(OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch)){
             Debug.Log("Button pressed for placing");
@@ -24,9 +59,17 @@ public class TestingScript : MonoBehaviour
             }
 
         }
+        else{
+            TryPlacePreviewPrefab();
+        
+        }
+    }
+    private void HandleDeletingObjectInputs(){
+        var objs = GetPlaceableObjectsAtPointedSpot();
         //try delete
-        else if(OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch) && objs != null){
+        if(OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch)){
             foreach(var obj in objs){
+                obj.GetComponent<PlaceableObject>().DestroyAllConnectedCables();
                 Destroy(obj);
             }
             EventManager.Instance.TriggerObjectDeleted();
@@ -35,9 +78,12 @@ public class TestingScript : MonoBehaviour
         else{
             TryPlacePreviewPrefab();
         }
-            
     }
-
+    private void HandleConnectingLightWithSwitchInputs(){
+    //while user holds the trigger, we connect the light with the switch
+    //if the user releases the trigger, we stop connecting
+    // TODO 
+    }
     public void PlacePrefabAtControllerPointedSpot(){
         if (currentObject != null){
             Quaternion rot = Quaternion.LookRotation(getSurfaceNormalFromPointedWall());
@@ -54,13 +100,18 @@ public class TestingScript : MonoBehaviour
 
         
     private void TryPlacePreviewPrefab(){
+        Debug.Log("preview method..");
         //if the user is pointing at a wall or floor, we place the preview prefab at the closest point
         if (currentObject != null){
             if(currentPreview == null){
-                currentPreview = Instantiate(currentObject.previewPrefab);
+                if(inputMode == OurInputMode.PlacingObject)
+                    currentPreview = Instantiate(currentObject.previewPrefab);
+                else{
+                    currentPreview = Instantiate(previewPrefabForDeleting);
+                    }
             }
             Vector3 position = getPositionFromRaycast();
-            if (position == Vector3.zero || IsPositionOccupied(position)){
+            if (position == Vector3.zero || (inputMode == OurInputMode.PlacingObject && IsPositionOccupied(position))){
                 Destroy(currentPreview);
             }
             else{
@@ -80,7 +131,7 @@ public class TestingScript : MonoBehaviour
         Ray ray = new Ray(controllerPosition, controllerForward);
         Vector3 surfaceNormal;
         
-        LabelFilter filter = LabelFilter.Included(new List<string> { "WALL_FACE"});
+        LabelFilter filter = LabelFilter.Included(new List<string> {currentObject.SurfaceToSpawnOnString});
         MRUKAnchor anchor;
         
         MRUK.Instance.GetCurrentRoom().GetBestPoseFromRaycast(ray, 2000f, filter,out anchor, out surfaceNormal);
@@ -95,7 +146,7 @@ public class TestingScript : MonoBehaviour
         Ray ray = new Ray(controllerPosition, controllerForward);
 
         
-        LabelFilter filter = LabelFilter.Included(new List<string> { "WALL_FACE"});
+        LabelFilter filter = LabelFilter.Included(new List<string> {currentObject.SurfaceToSpawnOnString});
         RaycastHit hit;
         MRUKAnchor anchor;
         
@@ -131,7 +182,14 @@ public class TestingScript : MonoBehaviour
 
 
 
+
     
 
     
+}
+public enum OurInputMode
+{
+    PlacingObject,
+    DeletingObject,
+    ConnectingLightWithSwitch
 }

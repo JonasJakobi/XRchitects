@@ -6,6 +6,10 @@ public class CableController : MonoBehaviour
     public Transform startPoint; // The starting point of the cable
     public Transform endPoint; // The ending point of the cable
 
+
+    private void Start() {
+        PowerSourcePlacer.Instance.RegisterCable(this.gameObject);
+    }
     void Update()
     {
         if (startPoint != null && endPoint != null)
@@ -22,5 +26,15 @@ public class CableController : MonoBehaviour
             transform.localScale = new Vector3(transform.localScale.x, distance / 2, transform.localScale.z);
             transform.up = direction; // Align the cylinder along the direction
         }
+    }
+    private void OnDestroy() {
+        PowerSourcePlacer.Instance.UnregisterCable(this.gameObject);
+    }
+
+    public void HideCable(){
+        GetComponent<MeshRenderer>().enabled = false;
+    }
+    public void ShowCable(){
+        GetComponent<MeshRenderer>().enabled = true;
     }
 }
