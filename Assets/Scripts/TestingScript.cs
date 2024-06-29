@@ -31,21 +31,16 @@ public class TestingScript : MonoBehaviour
         currentRay.transform.position = controllerPosition;
         currentRay.transform.rotation = Quaternion.LookRotation(controllerForward);
         Ray ray = new Ray(controllerPosition, controllerForward);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 1000f)){
-            if (hit.collider.tag == "UI"){
-                Destroy(currentPreview);
-                return;
+        RaycastHit[] hits = Physics.RaycastAll(ray, 1000f);
+        foreach (RaycastHit hit in hits)
+        {
+            if (hit.collider.tag == "UI")
+            {
+            Destroy(currentPreview);
+            return;
             }
         }
 
-
-        if(OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch)){
-            ChangeInputMode(OurInputMode.DeletingObject);
-        }
-        else if(OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch)){
-            ChangeInputMode(OurInputMode.PlacingObject);
-        }
         if(OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.LTouch)){
             PowerSourcePlacer.Instance.SetShowingCables(!PowerSourcePlacer.Instance.GetShowingCables());
         }
@@ -62,7 +57,7 @@ public class TestingScript : MonoBehaviour
                 HandleConnectingLightWithSwitchInputs();
                 break;
         }
-            
+        
     }
 
     public void ChangeInputMode(OurInputMode mode){
@@ -73,6 +68,12 @@ public class TestingScript : MonoBehaviour
            
         }
         inputMode = mode;
+    }
+    public void ChangeInputModeToDelete(){
+        ChangeInputMode(OurInputMode.DeletingObject);
+    }
+    public void ChangeInputModeToPlace(){
+        ChangeInputMode(OurInputMode.PlacingObject);
     }
     private void HandlePlacingObjectInputs(){
         //Try Place, noly allowed when nothing there
