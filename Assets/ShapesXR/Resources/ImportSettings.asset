@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ImportSettings
   m_EditorClassIdentifier: 
   _importedDataDirectory: ImportedSpaces
-  _materialMode: 1
+  _materialMode: 2
   _materialMapper: {fileID: 11400000, guid: 7e76eeb97d73ede419f1cb36556b3a0f, type: 2}
   _gltfMainTextureProperties:
   - baseColorTexture
