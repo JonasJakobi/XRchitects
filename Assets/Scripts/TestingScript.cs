@@ -15,6 +15,7 @@ public class TestingScript : MonoBehaviour
     [SerializeField]
     private GameObject previewPrefabForDeleting;
 
+
     
     void Update(){
 
@@ -94,7 +95,6 @@ public class TestingScript : MonoBehaviour
             Quaternion rot = Quaternion.LookRotation(getSurfaceNormalFromPointedWall());
             Vector3 pos = getPositionFromRaycast();
             var obj = Instantiate(currentObject.prefabForPlacing, pos, rot);
-            var anchor = obj.AddComponent<OVRSpatialAnchor>();
             //StartCoroutine(WaitAndSaveAnchor(anchor));
             EventManager.Instance.TriggerObjectPlaced(obj.transform.GetChild(0).gameObject);
         
@@ -187,17 +187,6 @@ public class TestingScript : MonoBehaviour
             return null;
         }
     }
-
-
-    /*
-    private void PlayPlacementSound(GameObject obj)
-    {
-        if (placementSound != null)
-        {
-            audioSource.PlayOneShot(placementSound);
-        }
-    }
-    */
 
     
 }
