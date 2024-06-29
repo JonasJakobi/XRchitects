@@ -7,7 +7,6 @@ using System.Linq;
 using UnityEngine;
 using DG.Tweening;
 using Sequence = DG.Tweening.Sequence;
-
 public class PlaceableObject : MonoBehaviour{
 
 
@@ -24,6 +23,7 @@ public class PlaceableObject : MonoBehaviour{
        
         
     }
+
 
     public bool GetConnectedToElectricity(){
         return connectedToElectricity;

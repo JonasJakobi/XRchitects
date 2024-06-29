@@ -8,15 +8,18 @@ using UnityEngine;
 
 public class TestingScript : MonoBehaviour
 {
+    public static TestingScript Instance;
     public SpawnableObjectMenuItem currentObject;  
 
     public OurInputMode inputMode;
-    private GameObject currentPreview;
+    public GameObject currentPreview;
     [SerializeField]
     private GameObject previewPrefabForDeleting;
 
 
-    
+    private void Start() {
+        Instance = this;
+    }
     void Update(){
 
         if(OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch)){

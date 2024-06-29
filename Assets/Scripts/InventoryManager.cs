@@ -6,6 +6,7 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
 
+    InventoryType currentInventoryType = InventoryType.Sockets;
    private void Update() {
         if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.LTouch))
         {
@@ -40,6 +41,7 @@ public class InventoryManager : MonoBehaviour
 
     public void PopulateInventory(InventoryType inventoryType)
     {
+        currentInventoryType = inventoryType;
         List<SpawnableObjectMenuItem> objects = new List<SpawnableObjectMenuItem>();
         switch (inventoryType)
         {
@@ -97,7 +99,55 @@ public class InventoryManager : MonoBehaviour
     {
         PopulateInventory(InventoryType.PowerGrid);
     }
-    
+    private void UpdateSpawnable(int index){
+        SpawnableObjectMenuItem spawnable = null;
+        switch (currentInventoryType)
+        {
+            case InventoryType.Sockets:
+                spawnable = socketsObjects[index];
+                break;
+            case InventoryType.Switches:
+                spawnable = switchesObjects[index];
+                break;
+            case InventoryType.Lights:
+                spawnable = lightsObjects[index];
+                break;
+            case InventoryType.PowerGrid:
+                spawnable = powerGridObjects[index];
+                break;
+            default:
+                break;
+        }
+        if(spawnable != null){
+            TestingScript.Instance.currentObject = spawnable;
+            Destroy(TestingScript.Instance.currentPreview);
+        }
+
+    }
+    public void UpdateSpawnableOne(){
+        UpdateSpawnable(0);
+    }
+    public void UpdateSpawnableTwo(){
+        UpdateSpawnable(1);
+    }
+    public void UpdateSpawnableThree(){
+        UpdateSpawnable(2);
+    }
+    public void UpdateSpawnableFour(){
+        UpdateSpawnable(3);
+    }
+    public void UpdateSpawnableFive(){
+        UpdateSpawnable(4);
+    }
+    public void UpdateSpawnableSix(){
+        UpdateSpawnable(5);
+    }
+    public void UpdateSpawnableSeven(){
+        UpdateSpawnable(6);
+    }
+    public void UpdateSpawnableEight(){
+        UpdateSpawnable(7);
+    }
 
 }
 
