@@ -161,6 +161,9 @@ public class TestingScript : MonoBehaviour
     }
 
     private bool IsPositionOccupied(Vector3 position){
+        if (position == Vector3.zero){
+            return true; // Position is occupied
+        }
         float checkRadius = 0.1f; // Adjust based on the size of the objects being placed
         Collider[] hitColliders = Physics.OverlapSphere(position, checkRadius);
         foreach (var hitCollider in hitColliders){

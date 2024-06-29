@@ -42,7 +42,7 @@ public class PowerSourcePlacer : MonoBehaviour
     }
     public IEnumerator CreateCablesBetweenObjects(GameObject obj, GameObject other)
     {   
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.2f);
         MRUKAnchor startWall = GetWallClosestTo(obj.transform, new List<MRUKAnchor>());
         MRUKAnchor endWall = GetWallClosestTo(other.transform, new List<MRUKAnchor>(){startWall});
         CableController lastCable;

@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &364517850345424664
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4078173736523888500}
-  m_Layer: 0
-  m_Name: Cable Point (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4078173736523888500
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 364517850345424664}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.014452173, y: 0.10000001, z: 0.004335653}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8670091877330353383}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6459908417117165712
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,7 +26,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: -6.111108, y: -0.12494358, z: -6.8149333}
-  m_LocalScale: {x: 34.59687, y: 34.59687, z: 5.0000005}
+  m_LocalScale: {x: 6.9, y: 6.9, z: 0.99720013}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8670091877330353383}
@@ -91,11 +60,10 @@ Transform:
   m_GameObject: {fileID: 7046166890006544453}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 0.401}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 4078173736523888500}
+  m_Children: []
   m_Father: {fileID: 244934346444960718}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &9204521977726654434
