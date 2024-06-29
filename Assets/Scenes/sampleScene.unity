@@ -3623,13 +3623,14 @@ GameObject:
   - component: {fileID: 1489482458}
   - component: {fileID: 1489482457}
   - component: {fileID: 1489482456}
+  - component: {fileID: 1489482460}
   m_Layer: 0
   m_Name: Inventory Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &323106889
 GameObject:
   m_ObjectHideFlags: 0
@@ -16840,6 +16841,34 @@ RectTransform:
   m_AnchoredPosition: {x: -0.002, y: 0.0386}
   m_SizeDelta: {x: 210, y: 105}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1489482460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316080947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8acb8207e184b45acec9543b9f482b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  socketsObjects:
+  - {fileID: 11400000, guid: 9ed03bb6751fd36499c5d7f79311e5b1, type: 2}
+  - {fileID: 11400000, guid: 22f35a9e6e875654da8fc01ae15ebae4, type: 2}
+  switchesObjects: []
+  lightsObjects:
+  - {fileID: 11400000, guid: aaa90af2e56269c49a8b5846f5173c92, type: 2}
+  powerGridObjects: []
+  inventoryFieldParents:
+  - {fileID: 656267163}
+  - {fileID: 63068014}
+  - {fileID: 1749865024}
+  - {fileID: 360976228}
+  - {fileID: 44354550}
+  - {fileID: 302988618}
+  - {fileID: 1768069886}
+  - {fileID: 1710119733}
 --- !u!1 &1491312915
 GameObject:
   m_ObjectHideFlags: 0

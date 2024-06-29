@@ -105,7 +105,6 @@ public class TestingScript : MonoBehaviour
 
         
     private void TryPlacePreviewPrefab(){
-        Debug.Log("preview method..");
         //if the user is pointing at a wall or floor, we place the preview prefab at the closest point
         if (currentObject != null){
             if(currentPreview == null){
