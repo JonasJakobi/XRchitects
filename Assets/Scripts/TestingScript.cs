@@ -21,6 +21,19 @@ public class TestingScript : MonoBehaviour
         Instance = this;
     }
     void Update(){
+        //Check with a regular raycast if the UI collider is in the way, tag is UI
+        Vector3 controllerPosition =  OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);
+        Vector3 controllerForward = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTouch) * Vector3.forward;
+        Ray ray = new Ray(controllerPosition, controllerForward);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 1000f)){
+            if (hit.collider.tag == "UI"){
+                Debug.Log("ui hit");
+                Destroy(currentPreview);
+                return;
+            }
+        }
+
 
         if(OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch)){
             ChangeInputMode(OurInputMode.DeletingObject);
