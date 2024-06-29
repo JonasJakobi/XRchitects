@@ -33866,6 +33866,26 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3136647593453579643, guid: e6f02ca0dbf285e44a71e67a859a9df6, type: 3}
+      propertyPath: socketsObjects.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3136647593453579643, guid: e6f02ca0dbf285e44a71e67a859a9df6, type: 3}
+      propertyPath: socketsObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: bbce850ebf7cb5e49a5a13511dc6731b, type: 2}
+    - target: {fileID: 3136647593453579643, guid: e6f02ca0dbf285e44a71e67a859a9df6, type: 3}
+      propertyPath: socketsObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: bbce850ebf7cb5e49a5a13511dc6731b, type: 2}
+    - target: {fileID: 3136647593453579643, guid: e6f02ca0dbf285e44a71e67a859a9df6, type: 3}
+      propertyPath: socketsObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: bbce850ebf7cb5e49a5a13511dc6731b, type: 2}
+    - target: {fileID: 3136647593453579643, guid: e6f02ca0dbf285e44a71e67a859a9df6, type: 3}
+      propertyPath: socketsObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: bbce850ebf7cb5e49a5a13511dc6731b, type: 2}
     - target: {fileID: 9153489296408499156, guid: e6f02ca0dbf285e44a71e67a859a9df6, type: 3}
       propertyPath: m_Name
       value: Main UI

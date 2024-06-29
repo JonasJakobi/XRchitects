@@ -22,6 +22,8 @@ public class PowerSourcePlacer : MonoBehaviour
         StartCoroutine(WaitAndDoStartRoutine());
     }
 
+   
+
     private IEnumerator WaitAndDoStartRoutine(){
         //wait for scene to be ready
         yield return new WaitForSeconds(2);

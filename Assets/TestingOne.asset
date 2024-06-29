@@ -15,5 +15,5 @@ MonoBehaviour:
   name: 
   prefabForPlacing: {fileID: 3051359160580876152, guid: 82f1faac03d23444c99ac76e616e2211, type: 3}
   previewPrefab: {fileID: 3051359160580876152, guid: 70811e01540caec419b1b7af4608b216, type: 3}
-  prefabDuringMenu: {fileID: 0}
+  prefabDuringMenu: {fileID: 3051359160580876152, guid: 95fb1c5fb40e09749937e04c77a68031, type: 3}
   SurfaceToSpawnOnString: WALL_FACE
