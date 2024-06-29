@@ -8,13 +8,23 @@ using UnityEngine;
 
 public class TestingScript : MonoBehaviour
 {
-    public SpawnableObjectMenuItem currentObject;  
-
-    public OurInputMode inputMode;
+    public SpawnableObjectMenuItem currentObject;
+    public AudioClip placementSound; // AudioClip for placement
+public OurInputMode inputMode;
     private GameObject currentPreview;
     [SerializeField]
     private GameObject previewPrefabForDeleting;
-    void Update(){
+    private AudioSource audioSource; // AudioSource component 
+
+    void Start()
+    {
+        // AudioSource component 
+        audioSource = gameObject.AddComponent<AudioSource>();
+        EventManager.Instance.OnObjectPlaced += PlayPlacementSound; // Add Event-Listener 
+    }
+
+    void Update()
+    {
 
         if(OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch)){
             ChangeInputMode(OurInputMode.DeletingObject);
@@ -52,9 +62,11 @@ public class TestingScript : MonoBehaviour
     }
     private void HandlePlacingObjectInputs(){
         //Try Place, noly allowed when nothing there
-        if(OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch)){
+        if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch))
+        {
             Debug.Log("Button pressed for placing");
-            if( !IsPositionOccupied(getPositionFromRaycast())){
+            if (!IsPositionOccupied(getPositionFromRaycast()))
+            {
                 PlacePrefabAtControllerPointedSpot();
             }
 
@@ -76,9 +88,9 @@ public class TestingScript : MonoBehaviour
                     Destroy(obj.transform.parent.gameObject);
             }
             EventManager.Instance.TriggerObjectDeleted();
-            
         }
-        else{
+        else
+        {
             TryPlacePreviewPrefab();
         }
     }
@@ -117,31 +129,31 @@ public class TestingScript : MonoBehaviour
             if (position == Vector3.zero || (inputMode == OurInputMode.PlacingObject && IsPositionOccupied(position))){
                 Destroy(currentPreview);
             }
-            else{
+            else
+            {
                 currentPreview.transform.position = getPositionFromRaycast();
                 currentPreview.transform.rotation = Quaternion.LookRotation(getSurfaceNormalFromPointedWall());
-                
             }
-            
         }
     }
 
-
-    private Vector3 getSurfaceNormalFromPointedWall(){
+    private Vector3 getSurfaceNormalFromPointedWall()
+    {
         //Where the right touch controller is pointing, we place at closest point after raycasting MRUKRoom
-        Vector3 controllerPosition =  OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);
+        Vector3 controllerPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);
         Vector3 controllerForward = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTouch) * Vector3.forward;
         Ray ray = new Ray(controllerPosition, controllerForward);
         Vector3 surfaceNormal;
         
         LabelFilter filter = LabelFilter.Included(new List<string> {currentObject.SurfaceToSpawnOnString});
         MRUKAnchor anchor;
-        
-        MRUK.Instance.GetCurrentRoom().GetBestPoseFromRaycast(ray, 2000f, filter,out anchor, out surfaceNormal);
+
+        MRUK.Instance.GetCurrentRoom().GetBestPoseFromRaycast(ray, 2000f, filter, out anchor, out surfaceNormal);
         return surfaceNormal;
     }
 
- private Vector3 getPositionFromRaycast(){
+    private Vector3 getPositionFromRaycast()
+    {
         //Where the right touch controller is pointing, we place at closest point after raycasting MRUKRoom
         Vector3 controllerPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);
         Quaternion controllerRotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTouch);
@@ -152,9 +164,10 @@ public class TestingScript : MonoBehaviour
         LabelFilter filter = LabelFilter.Included(new List<string> {currentObject.SurfaceToSpawnOnString});
         RaycastHit hit;
         MRUKAnchor anchor;
-        
-        MRUK.Instance.GetCurrentRoom().Raycast(ray, 2000f, filter,out hit, out anchor);
-        if (ReferenceEquals(hit, null)){
+
+        MRUK.Instance.GetCurrentRoom().Raycast(ray, 2000f, filter, out hit, out anchor);
+        if (ReferenceEquals(hit, null))
+        {
             return Vector3.zero;
         }
         return hit.point;
@@ -166,22 +179,26 @@ public class TestingScript : MonoBehaviour
         }
         float checkRadius = 0.1f; // Adjust based on the size of the objects being placed
         Collider[] hitColliders = Physics.OverlapSphere(position, checkRadius);
-        foreach (var hitCollider in hitColliders){
-            if (hitCollider.gameObject.tag == "PlacedObject"){ // Ensure the current preview object is not considered as an obstacle
+        foreach (var hitCollider in hitColliders)
+        {
+            if (hitCollider.gameObject.tag == "PlacedObject")
+            { // Ensure the current preview object is not considered as an obstacle
                 return true; // Position is occupied
             }
         }
         return false; // Position is not occupied
     }
-    
 
-    private GameObject[] GetPlaceableObjectsAtPointedSpot(){
-            Vector3 position = getPositionFromRaycast();
-        if (position != Vector3.zero){
+    private GameObject[] GetPlaceableObjectsAtPointedSpot()
+    {
+        Vector3 position = getPositionFromRaycast();
+        if (position != Vector3.zero)
+        {
             Collider[] hitColliders = Physics.OverlapSphere(position, 0.05f);
             return hitColliders.Where(x => x.gameObject.tag == "PlacedObject").Select(x => x.gameObject).ToArray();
         }
-        else{
+        else
+        {
             return null;
         }
     }
@@ -199,3 +216,12 @@ public enum OurInputMode
     DeletingObject,
     ConnectingLightWithSwitch
 }
+    private void PlayPlacementSound(GameObject obj)
+    {
+        if (placementSound != null)
+        {
+            audioSource.PlayOneShot(placementSound);
+        }
+    }
+}
+

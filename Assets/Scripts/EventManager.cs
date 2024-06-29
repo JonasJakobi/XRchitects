@@ -1,4 +1,3 @@
-
 // Singleton EventManager class to manage events for object placement and deletion
 using System;
 using UnityEngine;
