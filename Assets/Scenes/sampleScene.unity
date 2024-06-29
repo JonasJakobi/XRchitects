@@ -275,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc09933b59992434d87dcb3affb49622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentObject: {fileID: 11400000, guid: 9ed03bb6751fd36499c5d7f79311e5b1, type: 2}
+  currentObject: {fileID: 11400000, guid: 22f35a9e6e875654da8fc01ae15ebae4, type: 2}
   inputMode: 0
   previewPrefabForDeleting: {fileID: 3227466033909179254, guid: 58be66394f3242a4ba40bd9af834732c, type: 3}
 --- !u!4 &16598482
@@ -16822,7 +16822,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 316080947}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.0375}
+  m_LocalPosition: {x: 0, y: 0, z: 0.034}
   m_LocalScale: {x: 0.001, y: 0.001, z: 0.001}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -16856,7 +16856,8 @@ MonoBehaviour:
   socketsObjects:
   - {fileID: 11400000, guid: 9ed03bb6751fd36499c5d7f79311e5b1, type: 2}
   - {fileID: 11400000, guid: 22f35a9e6e875654da8fc01ae15ebae4, type: 2}
-  switchesObjects: []
+  switchesObjects:
+  - {fileID: 11400000, guid: 62fb3d459e554c7419c0fd19b33be9d8, type: 2}
   lightsObjects:
   - {fileID: 11400000, guid: aaa90af2e56269c49a8b5846f5173c92, type: 2}
   powerGridObjects: []

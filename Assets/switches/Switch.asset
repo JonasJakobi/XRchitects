@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd2b222204bbcd4429ca9d71a8c6f8af, type: 3}
+  m_Name: Switch
+  m_EditorClassIdentifier: 
+  name: 
+  prefabForPlacing: {fileID: 2152287352498432276, guid: d8e307e93d782a642af050a248ed09eb, type: 3}
+  previewPrefab: {fileID: 3985605644938516257, guid: 6f227d54dfc413b4581d7d4a912a3d54, type: 3}
+  prefabDuringMenu: {fileID: 4096395130100440992, guid: dfc11c3330a8bfc4b9882a4c8ec41a95, type: 3}
+  SurfaceToSpawnOnString: WALL_FACE

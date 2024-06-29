@@ -15,6 +15,10 @@ public class InventoryManager : MonoBehaviour
         {
             PopulateInventory(InventoryType.Switches);
         }
+        else if (OVRInput.GetDown(OVRInput.Button.PrimaryThumbstick, OVRInput.Controller.LTouch))
+        {
+            PopulateInventory(InventoryType.Lights);
+        }
 
         //if pretty much upside down, print a debug statement
         //use diretion angle to get rough area of direction
@@ -57,13 +61,16 @@ public class InventoryManager : MonoBehaviour
         {
 
             var inventoryField = inventoryFieldParents[i];
-            if(inventoryField.transform.childCount > 0)
+            if(inventoryField.transform.childCount > 0){
+                Debug.Log("Destroying object in inventory" + i);
                 Destroy(inventoryField.transform.GetChild(0).gameObject);
+
+            }
             if(objects.Count <= i)
             {
                 continue;
             }
-            Debug.Log("Spawning another object in inventory");
+            Debug.Log("Spawning another object in inventory" + i);
 
             var newObject = Instantiate(objects[i].prefabDuringMenu, inventoryField.transform);
             newObject.transform.localPosition = new Vector3(0, 0, -6f);
