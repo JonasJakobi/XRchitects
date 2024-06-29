@@ -1,4 +1,5 @@
 
+using DG.Tweening;
 using UnityEngine;
 
 public class CableController : MonoBehaviour
@@ -9,6 +10,11 @@ public class CableController : MonoBehaviour
 
     private void Start() {
         PowerSourcePlacer.Instance.RegisterCable(this.gameObject);
+        float xscale = transform.localScale.x;
+        float zscale = transform.localScale.z;
+        transform.localScale = new Vector3(0, transform.localScale.y, 0);
+        transform.DOScaleX(xscale, 1f).SetEase(Ease.OutBack);
+        transform.DOScaleZ(zscale, 1f).SetEase(Ease.OutBack);
     }
     void Update()
     {

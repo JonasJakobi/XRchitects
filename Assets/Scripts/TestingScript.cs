@@ -70,7 +70,10 @@ public class TestingScript : MonoBehaviour
         if(OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch)){
             foreach(var obj in objs){
                 obj.GetComponent<PlaceableObject>().DestroyAllConnectedCables();
-                Destroy(obj);
+                if(obj.transform.parent != null)
+                    Destroy(obj);
+                else
+                    Destroy(obj.transform.parent.gameObject);
             }
             EventManager.Instance.TriggerObjectDeleted();
             
@@ -91,7 +94,7 @@ public class TestingScript : MonoBehaviour
             var obj = Instantiate(currentObject.prefabForPlacing, pos, rot);
             var anchor = obj.AddComponent<OVRSpatialAnchor>();
             //StartCoroutine(WaitAndSaveAnchor(anchor));
-            EventManager.Instance.TriggerObjectPlaced(obj);
+            EventManager.Instance.TriggerObjectPlaced(obj.transform.GetChild(0).gameObject);
         
         }
     }
@@ -158,6 +161,9 @@ public class TestingScript : MonoBehaviour
     }
 
     private bool IsPositionOccupied(Vector3 position){
+        if (position == Vector3.zero){
+            return true; // Position is occupied
+        }
         float checkRadius = 0.1f; // Adjust based on the size of the objects being placed
         Collider[] hitColliders = Physics.OverlapSphere(position, checkRadius);
         foreach (var hitCollider in hitColliders){

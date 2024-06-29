@@ -38,11 +38,11 @@ public class PowerSourcePlacer : MonoBehaviour
         EventManager.Instance.OnObjectPlaced += CreateCableToPowerGrid;
     }
     public void CreateCableToPowerGrid(GameObject obj){
-        CreateCablesBetweenObjects(obj, powergrid);
+        StartCoroutine(CreateCablesBetweenObjects(obj, powergrid));
     }
-    public void CreateCablesBetweenObjects(GameObject obj, GameObject other)
+    public IEnumerator CreateCablesBetweenObjects(GameObject obj, GameObject other)
     {   
-
+        yield return new WaitForSeconds(0.2f);
         MRUKAnchor startWall = GetWallClosestTo(obj.transform, new List<MRUKAnchor>());
         MRUKAnchor endWall = GetWallClosestTo(other.transform, new List<MRUKAnchor>(){startWall});
         CableController lastCable;
@@ -127,7 +127,7 @@ public class PowerSourcePlacer : MonoBehaviour
 
     }
     public float GetWallHeight(){
-        return MRUK.Instance.GetCurrentRoom().GetRoomBounds().size.y - 0.2f;
+        return MRUK.Instance.GetCurrentRoom().GetRoomBounds().size.y;
     }
     public MRUKAnchor GetWallClosestTo(Transform transform, List<MRUKAnchor> wallAnchorsToIgnore){
         

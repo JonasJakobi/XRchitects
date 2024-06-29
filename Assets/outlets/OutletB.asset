@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd2b222204bbcd4429ca9d71a8c6f8af, type: 3}
+  m_Name: OutletB
+  m_EditorClassIdentifier: 
+  name: 
+  prefabForPlacing: {fileID: 7105917372167523346, guid: d533ef3e26c0bf3449331508de3d22d0, type: 3}
+  previewPrefab: {fileID: 8582343965277690080, guid: 0048b3379ad3b064ca362cc489f0981a, type: 3}
+  prefabDuringMenu: {fileID: 7772247700206386757, guid: c7455ea6a0f284f4f94e889a112494f6, type: 3}
+  SurfaceToSpawnOnString: WALL_FACE
