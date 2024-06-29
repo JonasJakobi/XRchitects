@@ -782,7 +782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc09933b59992434d87dcb3affb49622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentObject: {fileID: 11400000, guid: bbce850ebf7cb5e49a5a13511dc6731b, type: 2}
+  currentObject: {fileID: 11400000, guid: aaa90af2e56269c49a8b5846f5173c92, type: 2}
   inputMode: 0
   previewPrefabForDeleting: {fileID: 3227466033909179254, guid: 58be66394f3242a4ba40bd9af834732c, type: 3}
 --- !u!4 &16598482
@@ -33867,17 +33867,29 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3136647593453579643, guid: e6f02ca0dbf285e44a71e67a859a9df6, type: 3}
-      propertyPath: socketsObjects.Array.size
-      value: 4
+      propertyPath: lightsObjects.Array.size
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3136647593453579643, guid: e6f02ca0dbf285e44a71e67a859a9df6, type: 3}
+      propertyPath: socketsObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3136647593453579643, guid: e6f02ca0dbf285e44a71e67a859a9df6, type: 3}
+      propertyPath: lightsObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: aaa90af2e56269c49a8b5846f5173c92, type: 2}
+    - target: {fileID: 3136647593453579643, guid: e6f02ca0dbf285e44a71e67a859a9df6, type: 3}
+      propertyPath: lightsObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: aaa90af2e56269c49a8b5846f5173c92, type: 2}
     - target: {fileID: 3136647593453579643, guid: e6f02ca0dbf285e44a71e67a859a9df6, type: 3}
       propertyPath: socketsObjects.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: bbce850ebf7cb5e49a5a13511dc6731b, type: 2}
+      objectReference: {fileID: 11400000, guid: 9ed03bb6751fd36499c5d7f79311e5b1, type: 2}
     - target: {fileID: 3136647593453579643, guid: e6f02ca0dbf285e44a71e67a859a9df6, type: 3}
       propertyPath: socketsObjects.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: bbce850ebf7cb5e49a5a13511dc6731b, type: 2}
+      objectReference: {fileID: 11400000, guid: 22f35a9e6e875654da8fc01ae15ebae4, type: 2}
     - target: {fileID: 3136647593453579643, guid: e6f02ca0dbf285e44a71e67a859a9df6, type: 3}
       propertyPath: socketsObjects.Array.data[2]
       value: 

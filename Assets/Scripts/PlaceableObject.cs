@@ -17,6 +17,7 @@ public class PlaceableObject : MonoBehaviour{
     private void Start(){
         SetOutlineBasedOnElectricity();
         Vector3 localScale = transform.localScale;
+        
         transform.localScale = new Vector3(0,0,0);
         Sequence plop = DOTween.Sequence();
         transform.DOScale(localScale, 1f).SetEase(Ease.OutBack);

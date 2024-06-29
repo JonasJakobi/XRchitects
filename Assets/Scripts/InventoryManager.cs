@@ -63,14 +63,16 @@ public class InventoryManager : MonoBehaviour
                 Destroy(inventoryField.transform.GetChild(0).gameObject);
             if(objects.Count <= i)
             {
-                break;
+                continue;
             }
             Debug.Log("Spawning another object in inventory");
+
             var newObject = Instantiate(objects[i].prefabDuringMenu, inventoryField.transform);
-            newObject.transform.localPosition = new Vector3(0, 0, -0.05f);
+            newObject.transform.localPosition = new Vector3(0, 0, -0.1f);
+            newObject.transform.localRotation = Quaternion.Euler(0, 0, 0);
             Vector3 scale = newObject.transform.localScale;
             newObject.transform.localScale = Vector3.zero;
-            newObject.transform.DOScale(scale, 1.5f).SetEase(Ease.OutBack);
+            newObject.transform.DOScale(scale, 1f).SetEase(Ease.OutBack);
         }
     }
 

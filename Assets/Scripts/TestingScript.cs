@@ -70,7 +70,10 @@ public class TestingScript : MonoBehaviour
         if(OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch)){
             foreach(var obj in objs){
                 obj.GetComponent<PlaceableObject>().DestroyAllConnectedCables();
-                Destroy(obj);
+                if(obj.transform.parent != null)
+                    Destroy(obj);
+                else
+                    Destroy(obj.transform.parent.gameObject);
             }
             EventManager.Instance.TriggerObjectDeleted();
             
@@ -91,7 +94,7 @@ public class TestingScript : MonoBehaviour
             var obj = Instantiate(currentObject.prefabForPlacing, pos, rot);
             var anchor = obj.AddComponent<OVRSpatialAnchor>();
             //StartCoroutine(WaitAndSaveAnchor(anchor));
-            EventManager.Instance.TriggerObjectPlaced(obj);
+            EventManager.Instance.TriggerObjectPlaced(obj.transform.GetChild(0).gameObject);
         
         }
     }
