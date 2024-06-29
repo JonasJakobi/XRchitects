@@ -80,10 +80,28 @@ public class InventoryManager : MonoBehaviour
             newObject.transform.DOScale(scale, 1f).SetEase(Ease.OutBack);
         }
     }
-
+    //4 mehtods for populating the inventory for each type 
+    public void PopulateSocketsInventory()
+    {
+        PopulateInventory(InventoryType.Sockets);
+    }
+    public void PopulateSwitchesInventory()
+    {
+        PopulateInventory(InventoryType.Switches);
+    }
+    public void PopulateLightsInventory()
+    {
+        PopulateInventory(InventoryType.Lights);
+    }
+    public void PopulatePowerGridInventory()
+    {
+        PopulateInventory(InventoryType.PowerGrid);
+    }
+    
 
 }
 
+[System.Serializable]
 public enum InventoryType
 {
     Sockets,
