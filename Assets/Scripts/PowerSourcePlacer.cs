@@ -19,7 +19,8 @@ public class PowerSourcePlacer : MonoBehaviour
     void Start()
     {
         Instance = this;
-        StartCoroutine(WaitAndDoStartRoutine());
+        EventManager.Instance.OnObjectPlaced += CreateCableToPowerGrid;
+       // StartCoroutine(WaitAndDoStartRoutine());
     }
 
    
@@ -35,7 +36,7 @@ public class PowerSourcePlacer : MonoBehaviour
         Vector3 powergridPos;
         wallanch.GetClosestSurfacePosition(center, out powergridPos);
         powergrid = Instantiate(powerGridPrefab, powergridPos, Quaternion.identity);
-        EventManager.Instance.OnObjectPlaced += CreateCableToPowerGrid;
+        
     }
     public void CreateCableToPowerGrid(GameObject obj){
         StartCoroutine(CreateCablesBetweenObjects(obj, powergrid));
@@ -45,7 +46,7 @@ public class PowerSourcePlacer : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         Debug.Log("cable now");
         MRUKAnchor startWall = GetWallClosestTo(obj.transform, new List<MRUKAnchor>());
-        MRUKAnchor endWall = GetWallClosestTo(other.transform, new List<MRUKAnchor>(){startWall});
+        MRUKAnchor endWall = GetWallClosestTo(other.transform, new List<MRUKAnchor>());
         CableController lastCable;
         //First we create a cable from the obj to the ceiling. Then from that point to the other
         CableController newCable = Instantiate(cablePrefab).GetComponent<CableController>();

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: powergrid
   m_EditorClassIdentifier: 
   name: 
-  prefabForPlacing: {fileID: 0}
-  previewPrefab: {fileID: 0}
-  prefabDuringMenu: {fileID: 0}
-  SurfaceToSpawnOnString: 
+  prefabForPlacing: {fileID: 1735931577851555883, guid: 0a67ecafc2dc6fd49b6571c560526a0c, type: 3}
+  previewPrefab: {fileID: 2711641436241445661, guid: 5a64cdd29cd62714aa39611c43a24586, type: 3}
+  prefabDuringMenu: {fileID: 505957530020670177, guid: e86e5664a512ab040b52c431e6b57e51, type: 3}
+  SurfaceToSpawnOnString: WALL_FACE

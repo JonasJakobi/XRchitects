@@ -380,6 +380,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e6a6d4f8e438df34bbbe468d4038a4ee, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7113125649350734797}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e6a6d4f8e438df34bbbe468d4038a4ee, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2026478042768227525}
   m_SourcePrefab: {fileID: 100100000, guid: e6a6d4f8e438df34bbbe468d4038a4ee, type: 3}
 --- !u!4 &1326460154158672151 stripped
 Transform:
@@ -425,6 +428,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cables: []
+--- !u!114 &2026478042768227525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811389159397798829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2d7c3cc03359c743b88494f5065552a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8922416855402997466
 PrefabInstance:
   m_ObjectHideFlags: 0

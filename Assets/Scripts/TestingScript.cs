@@ -28,7 +28,6 @@ public class TestingScript : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 1000f)){
             if (hit.collider.tag == "UI"){
-                Debug.Log("ui hit");
                 Destroy(currentPreview);
                 return;
             }
@@ -112,7 +111,14 @@ public class TestingScript : MonoBehaviour
             Vector3 pos = getPositionFromRaycast();
             var obj = Instantiate(currentObject.prefabForPlacing, pos, rot);
             //StartCoroutine(WaitAndSaveAnchor(anchor));
-            EventManager.Instance.TriggerObjectPlaced(obj.transform.GetChild(0).gameObject);
+            if(obj.transform.GetChild(0).GetComponent<PowerGrid>() != null){
+                PowerSourcePlacer.Instance.powergrid = obj.transform.GetChild(0).gameObject;
+            }
+            else{
+                EventManager.Instance.TriggerObjectPlaced(obj.transform.GetChild(0).gameObject);
+            }
+
+            
         
         }
     }
