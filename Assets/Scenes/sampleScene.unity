@@ -25790,6 +25790,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5129080484949077472, guid: 44cf50d1a2e68b64791a3e3143ccda19, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119064598931816024, guid: 44cf50d1a2e68b64791a3e3143ccda19, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7956160891979918893, guid: 44cf50d1a2e68b64791a3e3143ccda19, type: 3}
+      propertyPath: _selectColor0.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7983261105550752962, guid: 44cf50d1a2e68b64791a3e3143ccda19, type: 3}
       propertyPath: _controller
       value: 
@@ -29982,6 +29994,14 @@ PrefabInstance:
     - target: {fileID: 3098293304965358369, guid: 44cf50d1a2e68b64791a3e3143ccda19, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -13.153
+      objectReference: {fileID: 0}
+    - target: {fileID: 7956160891979918893, guid: 44cf50d1a2e68b64791a3e3143ccda19, type: 3}
+      propertyPath: _hoverColor0.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7956160891979918893, guid: 44cf50d1a2e68b64791a3e3143ccda19, type: 3}
+      propertyPath: _selectColor0.a
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7983261105550752962, guid: 44cf50d1a2e68b64791a3e3143ccda19, type: 3}
       propertyPath: _controller
@@ -41066,6 +41086,8 @@ MonoBehaviour:
   inputMode: 0
   currentPreview: {fileID: 0}
   previewPrefabForDeleting: {fileID: 3227466033909179254, guid: 58be66394f3242a4ba40bd9af834732c, type: 3}
+  rayPrefab: {fileID: 5377750935877766383, guid: 9d059eb337b33d54b9713ae744c50393, type: 3}
+  currentRay: {fileID: 0}
 --- !u!222 &4666610948209251479
 CanvasRenderer:
   m_ObjectHideFlags: 0

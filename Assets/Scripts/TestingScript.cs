@@ -16,14 +16,20 @@ public class TestingScript : MonoBehaviour
     [SerializeField]
     private GameObject previewPrefabForDeleting;
 
-
+    public GameObject rayPrefab;
+    public GameObject currentRay;
     private void Start() {
         Instance = this;
+        currentRay = Instantiate(rayPrefab);
+        
     }
     void Update(){
         //Check with a regular raycast if the UI collider is in the way, tag is UI
         Vector3 controllerPosition =  OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);
         Vector3 controllerForward = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTouch) * Vector3.forward;
+        //Place the ray int he direction of the controller
+        currentRay.transform.position = controllerPosition;
+        currentRay.transform.rotation = Quaternion.LookRotation(controllerForward);
         Ray ray = new Ray(controllerPosition, controllerForward);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 1000f)){
