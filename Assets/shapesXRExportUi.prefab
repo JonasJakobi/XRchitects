@@ -4763,7 +4763,7 @@ GameObject:
   - component: {fileID: 925538433219514894}
   - component: {fileID: 6958092007833288293}
   m_Layer: 0
-  m_Name: Main UI
+  m_Name: shapesXRExportUi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
