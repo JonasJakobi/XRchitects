@@ -205,7 +205,13 @@ public OurInputMode inputMode;
 
 
 
-
+    private void PlayPlacementSound(GameObject obj)
+    {
+        if (placementSound != null)
+        {
+            audioSource.PlayOneShot(placementSound);
+        }
+    }
     
 
     
@@ -216,12 +222,4 @@ public enum OurInputMode
     DeletingObject,
     ConnectingLightWithSwitch
 }
-    private void PlayPlacementSound(GameObject obj)
-    {
-        if (placementSound != null)
-        {
-            audioSource.PlayOneShot(placementSound);
-        }
-    }
-}
-
+    
