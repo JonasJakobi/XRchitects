@@ -7,7 +7,11 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance;
     public AudioClip placementSound;
     public AudioClip buttonSound;
+    public AudioClip plugInSound;
+    public AudioClip plugOutSound;
     public AudioSource audioSource;
+
+    private bool plugIn = true;
 
     private void Start() {
         Instance = this;
@@ -23,4 +27,15 @@ public class AudioManager : MonoBehaviour
     public void PlayButton(){
         audioSource.PlayOneShot(buttonSound);
     }
+
+    public void PlayPlug(){
+        if(plugIn){
+            audioSource.PlayOneShot(plugInSound);
+        }else{
+            audioSource.PlayOneShot(plugOutSound);
+        }
+        plugIn = !plugIn;
+
+    }
+
 }

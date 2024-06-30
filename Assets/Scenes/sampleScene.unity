@@ -10425,7 +10425,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1729935251}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: PlayButton
+        m_MethodName: PlayPlug
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14475,6 +14475,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1729935251}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayPlug
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -20159,6 +20171,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placementSound: {fileID: 8300000, guid: e3bb6ecea67c941138d629ad85582b38, type: 3}
   buttonSound: {fileID: 8300000, guid: f0d4281f0e49b4f0bbec0ea1e6464c9d, type: 3}
+  plugInSound: {fileID: 8300000, guid: 5a6e2a2d6bbbd3e49b9f1e7d1a9af9d4, type: 3}
+  plugOutSound: {fileID: 8300000, guid: aebd5b957cbd4d14aaffd3e46b37ba32, type: 3}
   audioSource: {fileID: 0}
 --- !u!4 &1729935252
 Transform:
