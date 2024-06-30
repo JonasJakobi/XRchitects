@@ -2762,8 +2762,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.28459454, y: 0.21522465, z: 0.1}
-  m_Center: {x: 0.024719404, y: 0.013574243, z: 0.0000000036515586}
+  m_Size: {x: 0.28459454, y: 0.28059515, z: 0.1}
+  m_Center: {x: 0.024719404, y: -0.019110966, z: 0.0000000036515586}
 --- !u!1 &346305863
 GameObject:
   m_ObjectHideFlags: 0
@@ -10423,6 +10423,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1729935251}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &690279622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11743,6 +11755,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1729935251}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayButton
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -14677,9 +14701,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1174626051}
+  - component: {fileID: 1174626052}
   m_Layer: 0
   m_Name: InfoPanel
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14701,6 +14726,27 @@ Transform:
   - {fileID: 210184552}
   m_Father: {fileID: 326961104}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1174626052
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174626050}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.19860691, y: 0.2212861, z: 0.1}
+  m_Center: {x: 0.07099035, y: -0.043050863, z: -0.000000019243629}
 --- !u!1 &1174867344
 GameObject:
   m_ObjectHideFlags: 0
@@ -15440,6 +15486,18 @@ MonoBehaviour:
       - m_Target: {fileID: 4656665389533224853}
         m_TargetAssemblyTypeName: TestingScript, Assembly-CSharp
         m_MethodName: ChangeInputModeToDelete
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1729935251}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17632,6 +17690,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1729935251}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1487780777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19132,7 +19202,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1670751524}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5129080484949077472, guid: 44cf50d1a2e68b64791a3e3143ccda19, type: 3}
+    - {fileID: 6119064598931816024, guid: 44cf50d1a2e68b64791a3e3143ccda19, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44cf50d1a2e68b64791a3e3143ccda19, type: 3}
@@ -19256,6 +19328,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1729935251}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1174626050}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -22244,7 +22328,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1307627085}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6119064598931816024, guid: 44cf50d1a2e68b64791a3e3143ccda19, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44cf50d1a2e68b64791a3e3143ccda19, type: 3}
@@ -32538,7 +32623,7 @@ MonoBehaviour:
   trashButton: {fileID: 1259915829}
   trashOn: {fileID: 21300000, guid: 06262807b1cdf844f87c5c8fd95f603b, type: 3}
   trashOff: {fileID: 21300000, guid: 37744bd2021e7ab4b875f717f52ed864, type: 3}
-  currentObject: {fileID: 11400000, guid: 9ed03bb6751fd36499c5d7f79311e5b1, type: 2}
+  currentObject: {fileID: 11400000, guid: 0060d632283627b43bb064dd28a24920, type: 2}
   inputMode: 0
   currentPreview: {fileID: 0}
   previewPrefabForDeleting: {fileID: 3227466033909179254, guid: 58be66394f3242a4ba40bd9af834732c, type: 3}

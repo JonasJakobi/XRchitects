@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Reflection.Emit;
 
 public class TestingScript : MonoBehaviour
 {
@@ -176,8 +177,14 @@ public class TestingScript : MonoBehaviour
         Vector3 controllerForward = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTouch) * Vector3.forward;
         Ray ray = new Ray(controllerPosition, controllerForward);
         Vector3 surfaceNormal;
-        
-        LabelFilter filter = LabelFilter.Included(new List<string> {currentObject.SurfaceToSpawnOnString});
+        LabelFilter filter;
+        if(inputMode == OurInputMode.DeletingObject){
+             filter = LabelFilter.Included(new List<string> {"WALL_FACE", "CEILING"});
+        }
+        else{
+            filter = LabelFilter.Included(new List<string> {currentObject.SurfaceToSpawnOnString});
+
+        }
         MRUKAnchor anchor;
         
         MRUK.Instance.GetCurrentRoom().GetBestPoseFromRaycast(ray, 2000f, filter,out anchor, out surfaceNormal);
@@ -191,8 +198,13 @@ public class TestingScript : MonoBehaviour
         Vector3 controllerForward = controllerRotation * Vector3.forward;
         Ray ray = new Ray(controllerPosition, controllerForward);
 
-        
-        LabelFilter filter = LabelFilter.Included(new List<string> {currentObject.SurfaceToSpawnOnString});
+        LabelFilter filter;
+        if(inputMode == OurInputMode.DeletingObject){
+             filter = LabelFilter.Included(new List<string> {"WALL_FACE", "CEILING"});
+        }
+        else{
+            filter = LabelFilter.Included(new List<string> {currentObject.SurfaceToSpawnOnString});
+        }
         RaycastHit hit;
         MRUKAnchor anchor;
         

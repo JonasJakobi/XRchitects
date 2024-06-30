@@ -11,7 +11,7 @@ public class InventoryManager : MonoBehaviour
     InventoryType currentInventoryType = InventoryType.Sockets;
  
     private void OnEnable() {
-        PopulateInventory(InventoryType.Sockets);
+        PopulateInventory(InventoryType.PowerGrid);
     }
     //All of these lists are populated in the inspector
     public List<SpawnableObjectMenuItem> socketsObjects = new List<SpawnableObjectMenuItem>();
@@ -24,6 +24,7 @@ public class InventoryManager : MonoBehaviour
 
     public void PopulateInventory(InventoryType inventoryType)
     {
+        AudioManager.Instance.PlayButton();
         currentInventoryType = inventoryType;
         List<SpawnableObjectMenuItem> objects = new List<SpawnableObjectMenuItem>();
         switch (inventoryType)
