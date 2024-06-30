@@ -77,7 +77,7 @@ public class TestingScript : MonoBehaviour
     }
     public void ChangeInputModeToDelete(){
         if(inputMode == OurInputMode.DeletingObject){
-            ChangeInputMode(OurInputMode.PlacingObject);
+            ChangeInputModeToPlace();
             return;
         }
         ChangeInputMode(OurInputMode.DeletingObject);
