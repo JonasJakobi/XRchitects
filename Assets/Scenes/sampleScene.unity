@@ -633,7 +633,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &44354551
 RectTransform:
   m_ObjectHideFlags: 0
@@ -841,7 +841,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &85050638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2498,7 +2498,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &302988619
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2861,7 +2861,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &370229272
 GameObject:
   m_ObjectHideFlags: 0
@@ -9948,7 +9948,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &668499802
 GameObject:
   m_ObjectHideFlags: 0
@@ -17830,9 +17830,11 @@ MonoBehaviour:
   socketsObjects:
   - {fileID: 11400000, guid: 9ed03bb6751fd36499c5d7f79311e5b1, type: 2}
   - {fileID: 11400000, guid: 22f35a9e6e875654da8fc01ae15ebae4, type: 2}
+  - {fileID: 11400000, guid: a0f1d3f7cee6e5b479ed014c55e96986, type: 2}
   switchesObjects:
   - {fileID: 11400000, guid: 62fb3d459e554c7419c0fd19b33be9d8, type: 2}
   - {fileID: 11400000, guid: 840e0b23bca1b394f8d87c773913eed3, type: 2}
+  - {fileID: 11400000, guid: 7885a523305219840bff4906723de611, type: 2}
   lightsObjects:
   - {fileID: 11400000, guid: aaa90af2e56269c49a8b5846f5173c92, type: 2}
   powerGridObjects:
@@ -20087,7 +20089,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1715342142
 GameObject:
   m_ObjectHideFlags: 0
@@ -20450,7 +20452,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1749865025
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20520,7 +20522,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1768069887
 RectTransform:
   m_ObjectHideFlags: 0

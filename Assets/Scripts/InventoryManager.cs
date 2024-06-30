@@ -11,7 +11,7 @@ public class InventoryManager : MonoBehaviour
     InventoryType currentInventoryType = InventoryType.Sockets;
  
     private void OnEnable() {
-        PopulateInventory(InventoryType.PowerGrid);
+        PopulatePowerGridInventory();
     }
     //All of these lists are populated in the inspector
     public List<SpawnableObjectMenuItem> socketsObjects = new List<SpawnableObjectMenuItem>();

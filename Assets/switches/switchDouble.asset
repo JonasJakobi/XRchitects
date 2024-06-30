@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd2b222204bbcd4429ca9d71a8c6f8af, type: 3}
-  m_Name: OutletB
+  m_Name: switchDouble
   m_EditorClassIdentifier: 
   name: 
-  prefabForPlacing: {fileID: 7105917372167523346, guid: d533ef3e26c0bf3449331508de3d22d0, type: 3}
-  previewPrefab: {fileID: 8582343965277690080, guid: 0048b3379ad3b064ca362cc489f0981a, type: 3}
-  prefabDuringMenu: {fileID: 7105917372167523346, guid: 100d8e96db7e0024e855b8c16b1e65d7, type: 3}
+  prefabForPlacing: {fileID: 2152287352498432276, guid: 1433d05b8bc453745bf59110fca257da, type: 3}
+  previewPrefab: {fileID: 3985605644938516257, guid: 7cf5df88c67e8cb44b66c3d6941f72a2, type: 3}
+  prefabDuringMenu: {fileID: 4096395130100440992, guid: 3ebfa94507c9384458bd31dffb0b7805, type: 3}
   SurfaceToSpawnOnString: WALL_FACE
