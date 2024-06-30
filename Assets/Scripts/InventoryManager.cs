@@ -2,31 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
-
+    public Color available;
+    public Color unavailable;
     InventoryType currentInventoryType = InventoryType.Sockets;
-   private void Update() {
-        if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.LTouch))
-        {
-            PopulateInventory(InventoryType.Sockets);
-        }
-        else if (OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.LTouch))
-        {
-            PopulateInventory(InventoryType.Switches);
-        }
-        else if (OVRInput.GetDown(OVRInput.Button.PrimaryThumbstick, OVRInput.Controller.LTouch))
-        {
-            PopulateInventory(InventoryType.Lights);
-        }
-
-        //if pretty much upside down, print a debug statement
-        //use diretion angle to get rough area of direction
-        if(transform.rotation.eulerAngles.x > 90 && transform.rotation.eulerAngles.x < 270)
-            Debug.Log("Upside down");
-   }
-
+ 
     private void OnEnable() {
         PopulateInventory(InventoryType.Sockets);
     }
@@ -63,13 +46,19 @@ public class InventoryManager : MonoBehaviour
         {
 
             var inventoryField = inventoryFieldParents[i];
+            //change color of image component
+            inventoryField.GetComponent<Button>().gameObject.SetActive(true);
+            inventoryField.GetComponent<UnityEngine.UI.Image>().color = available;
             if(inventoryField.transform.childCount > 0){
                 Debug.Log("Destroying object in inventory" + i);
                 Destroy(inventoryField.transform.GetChild(0).gameObject);
+                
 
             }
             if(objects.Count <= i)
             {
+                inventoryField.GetComponent<UnityEngine.UI.Image>().color = unavailable;
+                inventoryField.GetComponent<Button>().gameObject.SetActive(false);
                 continue;
             }
             Debug.Log("Spawning another object in inventory" + i);
@@ -100,6 +89,7 @@ public class InventoryManager : MonoBehaviour
         PopulateInventory(InventoryType.PowerGrid);
     }
     private void UpdateSpawnable(int index){
+        AudioManager.Instance.PlayButton();
         SpawnableObjectMenuItem spawnable = null;
         switch (currentInventoryType)
         {

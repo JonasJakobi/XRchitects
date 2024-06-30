@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager Instance;
     public AudioClip placementSound;
+    public AudioClip buttonSound;
     public AudioSource audioSource;
 
     private void Start() {
+        Instance = this;
         audioSource = GetComponent<AudioSource>();
         //subscribe to placement event
       //  EventManager.Instance.OnObjectPlaced += PlayPlacementSound;
     }
-    private void PlayPlacementSound(GameObject obj)
+    public void PlayPlacementSound()
     {
-        if (placementSound != null)
-        {
-            audioSource.PlayOneShot(placementSound);
-        }
+        audioSource.PlayOneShot(placementSound);
+    }
+
+    public void PlayButton(){
+        audioSource.PlayOneShot(buttonSound);
     }
 }

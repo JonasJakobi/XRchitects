@@ -14,6 +14,7 @@ public class PlaceableObject : MonoBehaviour{
 
     public List<GameObject> cables = new List<GameObject>();
     private void Start(){
+        AudioManager.Instance.PlayPlacementSound();
         SetOutlineBasedOnElectricity();
         Vector3 localScale = transform.localScale;
         
