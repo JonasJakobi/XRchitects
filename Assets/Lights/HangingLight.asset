@@ -15,5 +15,5 @@ MonoBehaviour:
   name: 
   prefabForPlacing: {fileID: 7484943422277467864, guid: 429e322460e5cd244b47fa932653026d, type: 3}
   previewPrefab: {fileID: 2324466034133563515, guid: b6d4c32755ead53449d46b8fa29823f9, type: 3}
-  prefabDuringMenu: {fileID: 6459908417117165712, guid: 8db21a00e1effc340af79d9a5e9eec69, type: 3}
+  prefabDuringMenu: {fileID: 5517838503964244265, guid: 1a05d2b5dd7feae48ba07005328796d9, type: 3}
   SurfaceToSpawnOnString: CEILING
