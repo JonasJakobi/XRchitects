@@ -15252,16 +15252,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: b635e9360e0be8d4097503e3126b14ce, type: 2}
-  m_Color: {r: 1, g: 0.2471698, b: 0.2471698, a: 1}
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 37744bd2021e7ab4b875f717f52ed864, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -32167,6 +32167,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc09933b59992434d87dcb3affb49622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trashButton: {fileID: 1259915829}
+  trashOn: {fileID: 21300000, guid: 06262807b1cdf844f87c5c8fd95f603b, type: 3}
+  trashOff: {fileID: 21300000, guid: 37744bd2021e7ab4b875f717f52ed864, type: 3}
   currentObject: {fileID: 11400000, guid: 9ed03bb6751fd36499c5d7f79311e5b1, type: 2}
   inputMode: 0
   currentPreview: {fileID: 0}

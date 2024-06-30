@@ -5,9 +5,14 @@ using Meta.XR.MRUtilityKit;
 using Unity.VisualScripting;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TestingScript : MonoBehaviour
 {
+
+    public Image trashButton;
+    public Sprite trashOn;
+    public Sprite trashOff;
     public static TestingScript Instance;
     public SpawnableObjectMenuItem currentObject;  
 
@@ -21,6 +26,7 @@ public class TestingScript : MonoBehaviour
     private void Start() {
         Instance = this;
         currentRay = Instantiate(rayPrefab);
+        ChangeInputModeToPlace();
         
     }
     void Update(){
@@ -70,10 +76,17 @@ public class TestingScript : MonoBehaviour
         inputMode = mode;
     }
     public void ChangeInputModeToDelete(){
+        if(inputMode == OurInputMode.DeletingObject){
+            ChangeInputMode(OurInputMode.PlacingObject);
+            return;
+        }
         ChangeInputMode(OurInputMode.DeletingObject);
+        trashButton.sprite = trashOn;
     }
     public void ChangeInputModeToPlace(){
         ChangeInputMode(OurInputMode.PlacingObject);
+        trashButton.sprite = trashOff;
+
     }
     private void HandlePlacingObjectInputs(){
         //Try Place, noly allowed when nothing there
