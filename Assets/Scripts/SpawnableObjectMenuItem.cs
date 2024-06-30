@@ -5,7 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class SpawnableObjectMenuItem :ScriptableObject
 {   
-    public string name;
     public GameObject prefabForPlacing;
 
     public GameObject previewPrefab;

@@ -18,6 +18,7 @@ public class SmoothMRTransition : MonoBehaviour
         if (isTransitioning == false)
         {
             StartCoroutine("CR_TransitionToVR");
+            StartCoroutine(BHapticPulseIntense(OVRInput.Controller.All));
         }
     }
 
@@ -46,6 +47,8 @@ public class SmoothMRTransition : MonoBehaviour
         if (isTransitioning == false)
         {
             StartCoroutine("CR_TransitionToMR");
+            StartCoroutine(BHapticPulseIntense(OVRInput.Controller.All));
+
         }
     }
 
@@ -61,5 +64,12 @@ public class SmoothMRTransition : MonoBehaviour
 
         isTransitioning = false;
         Debug.Log("Stopped Coroutine CR_TransitionToMR");
+    }
+
+    public IEnumerator BHapticPulseIntense(OVRInput.Controller controller)
+    {
+            OVRInput.SetControllerVibration(1f, 0.5f, controller);
+            yield return new WaitForSeconds(0.5f);
+            OVRInput.SetControllerVibration(0f, 0f, controller);
     }
 }
